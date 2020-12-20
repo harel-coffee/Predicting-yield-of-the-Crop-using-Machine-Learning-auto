@@ -26,11 +26,6 @@ scaled_df = scaler.fit_transform(df)
 scaled_df = pd.DataFrame(scaled_df, columns=names)
 
 
-# Create range for your new columns
-lat_range = zip(xrange(32, 44), xrange(33, 45))
-new_df = pd.DataFrame()
-# Iterate and create new columns, with the 0 and 1 encoding
-for r in lat_range:
-        new_df["latitude_%d_to_%d" % r] = df["latitude"].apply(
-            lambda l: 1.0 if l >= r[0] and l < r[1] else 0.0)
-new_df
+
+df1=pd.DataFrame(data=scaled_df,columns=["AREA","RAINFALL","AVG_TEMPERATURE","HUMIDITY","GROUND_WATERLEVEL","PRODUCTION"])
+df1.to_csv('normdrychillies.csv',index=False)
